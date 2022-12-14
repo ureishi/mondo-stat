@@ -71,7 +71,7 @@ async def check_mondo():
         score_list.append([message.author.name, point])
         score_list = sorted(score_list, key=lambda x: x[1], reverse=True)
 
-    result = "Mondo Stats for " + record_date.strftime("%Y/%m/%d") + "\n"
+    result = f'Mondo Stats for{record_date.strftime("%Y/%m/%d")}\n'
     for i, (name, rate) in enumerate(score_list):
         result += f"{i + 1}: {name} {rate}points\n"
 
