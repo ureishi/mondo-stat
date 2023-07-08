@@ -39,14 +39,14 @@ async def check_mondo():
     if now.strftime("%H:%M") != "00:00":
         return
 
-    record_date = now - datetime.timedelta(days=1)
+    record_date = now - datetime.timedelta(days=1, minutes=now.minute, seconds=now.second, microseconds=now.microsecond)
 
     date_regex = re.compile("[0-9]{4}/[0-9]{2}/[0-9]{2}")  # YYYY/MM/DD
     score_regex = re.compile("Score: [0-9]{1,2}/[0-9]{2}")  # Score: 00/00
     score_list = []
 
     mondo_ch = bot.get_channel(986346869720502384)
-    async for message in mondo_ch.history(after=now - datetime.timedelta(days=1)):
+    async for message in mondo_ch.history(after=record_date):
         if "#Mondo" not in message.content:
             continue
 
