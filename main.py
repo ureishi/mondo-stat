@@ -46,7 +46,7 @@ async def check_mondo():
     score_list = []
 
     mondo_ch = bot.get_channel(986346869720502384)
-    async for message in mondo_ch.history(after=now - datetime.timedelta(days=1)):
+    async for message in mondo_ch.history(after=now - datetime.timedelta(days=1, hours=now.hour, minutes=now.minute, seconds=now.second, microseconds=now.microsecond)):
         if "#Mondo" not in message.content:
             continue
 
